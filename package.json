@@ -7,9 +7,10 @@
     "prebuild": "rm dist/* -rf",
     "build": "npx babel  src -d dist --ignore src/*.test.js,src/**/*.test.js",
     "lint": "npx prettier --write './src/{*.js,**/*.js}' && npx eslint --fix './src/{*.js,**/*.js}'",
-    "test": "npx mocha \"src/**/*.test.js\" --require @babel/register --file mocha.setup.js --exit --timeout 10000",
+    "test2": "npx mocha \"src/**/*.test.js\" --require @babel/register --file mocha.setup.js --exit --timeout 10000",
+    "test": "npx lerna run test",
     "prestart": "npm run build",
-    "start": "node start dist/index.js",
+    "start": "node dist/index.js",
     "start-dev": "npx nodemon --exec npx babel-node src/index.js"
   },
   "keywords": [],

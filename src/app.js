@@ -5,6 +5,7 @@ import {
   securityMiddlewares,
   parsersMiddlewares
 } from './middleware';
+import assets from '../packages/assets';
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.use(parsersMiddlewares);
 app.use(loggerMiddleware);
 
 // Connect all routes
-// app.use('/departments', departments);
+app.use('/assets', assets);
 
 // Error handling
 app.use(errorMiddleware);
