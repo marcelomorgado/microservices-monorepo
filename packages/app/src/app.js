@@ -23,7 +23,9 @@ const createApp = routes => {
   app.use(loggerMiddleware);
 
   // Connect all routes
-  app.use(routes);
+  if (routes && routes.length > 0) {
+    app.use(routes);
+  }
 
   // Error handling
   app.use(errorMiddleware);
