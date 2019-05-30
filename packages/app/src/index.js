@@ -1,11 +1,24 @@
-// A dead simple ES6 async/await support hack for ExpressJS
-// Import this script somewhere **before** you start using express
 import 'express-async-errors';
+import dotenv from 'dotenv';
+import yargs from 'yargs';
+import createApp from './app';
+import { logger } from './middleware/logger';
 
-require('dotenv').config();
-const app = require('./app');
+dotenv.config();
 
-const { env } = process;
-const { APP_PORT } = env;
+const start = () => {
+  let { routes } = yargs.array('routes').parse();
+  routes = routes || [];
 
-app.listen(APP_PORT, () => console.info(`Express server currently running on port ${APP_PORT}`));
+  logger.info(`Loading routes... [${routes}]`);
+
+  // eslint-disable-next-line global-require, import/no-dynamic-require, security/detect-non-literal-require
+  const app = createApp(routes.map(r => require(r).default));
+
+  const { env } = process;
+  const { APP_PORT } = env;
+
+  app.listen(APP_PORT, () => console.info(`Express server currently running on port ${APP_PORT}`));
+};
+
+start();

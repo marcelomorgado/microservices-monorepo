@@ -6,7 +6,8 @@
   "scripts": {
     "bootstrap": "npx lerna run clean && npx lerna bootstrap",
     "lint": "npx prettier --write './packages/*/src/{*.js,**/*.js}' && npx eslint --fix './packages/*/src/{*.js,**/*.js}'",
-    "test": "npx lerna run test --ignore test-helpers app"
+    "test": "npx lerna run test --ignore test-helpers app",
+    "start": "npx lerna run start --stream --scope app -- -- --routes assets prices"
   },
   "keywords": [],
   "author": "",

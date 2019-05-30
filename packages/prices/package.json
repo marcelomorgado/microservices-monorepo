@@ -2,7 +2,7 @@
   "name": "prices",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prebuild": "rm dist/* -rf",
     "build": "npx babel  src -d dist --ignore src/*.test.js,src/**/*.test.js",
