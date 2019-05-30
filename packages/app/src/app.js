@@ -1,4 +1,5 @@
 import express from 'express';
+import prices from 'prices';
 import assets from 'assets';
 import {
   loggerMiddleware,
@@ -9,7 +10,7 @@ import {
 
 const app = express();
 
-// important if behind a proxy to ensure client IP is passed to req.ip
+// Important if behind a proxy to ensure client IP is passed to req.ip
 app.enable('trust proxy');
 
 // Security middlewares
@@ -23,6 +24,7 @@ app.use(loggerMiddleware);
 
 // Connect all routes
 app.use('/assets', assets);
+app.use('/prices', prices);
 
 // Error handling
 app.use(errorMiddleware);
