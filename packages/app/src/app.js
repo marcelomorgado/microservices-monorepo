@@ -1,11 +1,11 @@
 import express from 'express';
+import assets from 'assets';
 import {
   loggerMiddleware,
   errorMiddleware,
   securityMiddlewares,
   parsersMiddlewares
 } from './middleware';
-import assets from '../packages/assets';
 
 const app = express();
 

@@ -1,4 +1,4 @@
-import { Errors } from '../../packages/common/dist';
+import { Errors } from 'common';
 import { logger } from './logger';
 
 const { ClientError, HTTP404Error, ServerError } = Errors;
