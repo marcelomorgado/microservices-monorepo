@@ -1,11 +1,9 @@
-const assets = [{ symbol: 'BTC', name: 'Bitcoin' }, { symbol: 'ETH', name: 'Ethereum' }];
+const prices = [{ symbol: 'BTC', priceUsd: '10000' }, { symbol: 'ETH', priceUsd: '1000' }];
 
-export const getAllAssets = async () => {
-  return assets;
+export const getAllPrices = async () => {
+  return prices;
 };
 
-export const getAssetBySymbol = async symbol => {
-  return assets.find(a => a.symbol === symbol);
+export const getPriceBySymbol = async symbol => {
+  return prices.find(p => p.symbol === symbol);
 };
-
-export default { getAllAssets };

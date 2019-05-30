@@ -3,30 +3,31 @@ import routes from './routes';
 import { AssetNotFound } from './errors';
 
 const app = appToTest(routes);
-const assets = [{ symbol: 'BTC', name: 'Bitcoin' }, { symbol: 'ETH', name: 'Ethereum' }];
+const prices = [{ symbol: 'BTC', priceUsd: '10000' }, { symbol: 'ETH', priceUsd: '1000' }];
 
-describe('/assets route', () => {
+describe('PRICES', () => {
   describe('GET /', () => {
-    it('should get a list of all assets', async () => {
+    it('should get all prices', async () => {
       await supertest(app)
         .get('/')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(200, assets);
+        .expect(200, prices);
     });
   });
 
   describe('GET /{symbol}', () => {
-    it('should get an asset', async () => {
-      const [asset] = assets;
-      const { symbol } = asset;
+    it("should get an asset's price", async () => {
+      const [asset] = prices;
+      const { symbol, priceUsd: expectedPrice } = asset;
 
       const res = await supertest(app)
         .get(`/${symbol}`)
         .expect('Content-Type', /json/)
         .expect(200);
-      const { body } = res;
-      expect(body).to.deep.equal(asset);
+      const { body: bitcoin } = res;
+      const { priceUsd } = bitcoin;
+      expect(priceUsd).to.deep.equal(expectedPrice);
     });
 
     it('respond with not found error', async () => {

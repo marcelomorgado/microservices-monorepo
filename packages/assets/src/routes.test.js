@@ -5,7 +5,7 @@ import { AssetNotFound } from './errors';
 const app = appToTest(routes);
 const assets = [{ symbol: 'BTC', name: 'Bitcoin' }, { symbol: 'ETH', name: 'Ethereum' }];
 
-describe('/assets route', () => {
+describe('ASSETS', () => {
   describe('GET /', () => {
     it('should get a list of all assets', async () => {
       await supertest(app)
