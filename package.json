@@ -8,7 +8,7 @@
     "prebuild": "rm dist/* -rf",
     "build": "npx babel  src -d dist --ignore src/*.test.js,src/**/*.test.js",
     "lint": "npx prettier --write './src/{*.js,**/*.js}' && npx eslint --fix './src/{*.js,**/*.js}'",
-    "test": "npx lerna run test",
+    "test": "npx lerna run test --ignore test-helpers",
     "prestart": "npm run build",
     "start": "node dist/index.js",
     "start-dev": "npx nodemon --exec npx babel-node src/index.js"

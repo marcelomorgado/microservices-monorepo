@@ -1,7 +1,7 @@
 import express from 'express';
-import errorMiddleware from '../middleware/error';
-import securityMiddlewares from '../middleware/security';
-import parsersMiddlewares from '../middleware/parsers';
+import errorMiddleware from '../../../dist/middleware/error';
+import securityMiddlewares from '../../../dist/middleware/security';
+import parsersMiddlewares from '../../../dist/middleware/parsers';
 
 export const appToTest = router => {
   const app = express();
