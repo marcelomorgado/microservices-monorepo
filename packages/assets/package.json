@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha router.test.js --require @babel/register --file mocha.setup.js"
+    "test": "npx mocha src/*.test.js --require @babel/register --file mocha.setup.js"
   },
   "keywords": [],
   "author": "",

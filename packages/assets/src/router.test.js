@@ -1,4 +1,4 @@
-import { appToTest } from '../../dist/testHelpers';
+import { appToTest } from '../../../dist/testHelpers';
 import router from './router';
 import { AssetNotFound } from './errors';
 

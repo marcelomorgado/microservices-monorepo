@@ -1,4 +1,4 @@
-import { BadRequestError } from '../../dist/common/errors';
+import { BadRequestError } from '../../../dist/common/errors';
 
 export class AssetNotFound extends BadRequestError {
   constructor() {
