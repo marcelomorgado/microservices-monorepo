@@ -21,7 +21,7 @@ module.exports = {
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['**/*.test.js', 'mocha.setup.js', '**/testHelpers/*.js'] }
+      { devDependencies: ['**/*.test.js', '**/mocha.setup.js', '**/testHelpers/*.js'] }
     ]
   },
   overrides: [
