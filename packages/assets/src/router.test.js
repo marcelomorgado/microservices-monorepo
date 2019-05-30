@@ -29,7 +29,7 @@ describe('/assets route', () => {
       expect(body).to.deep.equal(asset);
     });
 
-    it('respond with not found error', async () => {
+    it.only('respond with not found error', async () => {
       const notExistentSymbol = 'XYZ';
 
       const res = await supertest(app)

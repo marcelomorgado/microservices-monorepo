@@ -1,5 +1,7 @@
-import { ClientError, HTTP404Error, ServerError } from '../common/errors';
+import { Errors } from '../../packages/common/dist';
 import { logger } from './logger';
+
+const { ClientError, HTTP404Error, ServerError } = Errors;
 
 const { env } = process;
 const { NODE_ENV } = env;

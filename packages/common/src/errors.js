@@ -43,3 +43,5 @@ export class BadRequestError extends ClientError {
     });
   }
 }
+
+export default { HTTP404Error, BadRequestError, ServerError, ClientError };

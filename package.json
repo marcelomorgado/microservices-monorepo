@@ -4,10 +4,10 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "bootstrap": "npx lerna run clean && npx lerna bootstrap",
     "prebuild": "rm dist/* -rf",
     "build": "npx babel  src -d dist --ignore src/*.test.js,src/**/*.test.js",
     "lint": "npx prettier --write './src/{*.js,**/*.js}' && npx eslint --fix './src/{*.js,**/*.js}'",
-    "test2": "npx mocha \"src/**/*.test.js\" --require @babel/register --file mocha.setup.js --exit --timeout 10000",
     "test": "npx lerna run test",
     "prestart": "npm run build",
     "start": "node dist/index.js",
