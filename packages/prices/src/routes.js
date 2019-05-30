@@ -4,12 +4,12 @@ import { getAllPrices, getPriceBySymbol } from './db';
 
 const router = Router();
 
-router.get('/', async (req, res) => {
+router.get('/prices', async (req, res) => {
   const asset = await getAllPrices();
   res.json(asset);
 });
 
-router.get('/:symbol', async (req, res) => {
+router.get('/prices/:symbol', async (req, res) => {
   const { params } = req;
   const { symbol } = params;
 

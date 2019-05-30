@@ -1,9 +1,12 @@
-// A dead simple ES6 async/await support hack for ExpressJS
-// Import this script somewhere **before** you start using express
 import 'express-async-errors';
+import dotenv from 'dotenv';
+import prices from 'prices';
+import assets from 'assets';
 
-require('dotenv').config();
-const app = require('./app');
+dotenv.config();
+const createApp = require('./app');
+
+const app = createApp([prices, assets]);
 
 const { env } = process;
 const { APP_PORT } = env;

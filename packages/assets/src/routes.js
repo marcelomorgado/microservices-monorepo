@@ -4,12 +4,12 @@ import { getAllAssets, getAssetBySymbol } from './db';
 
 const router = Router();
 
-router.get('/', async (req, res) => {
+router.get('/assets', async (req, res) => {
   const asset = await getAllAssets();
   res.json(asset);
 });
 
-router.get('/:symbol', async (req, res) => {
+router.get('/assets/:symbol', async (req, res) => {
   const { params } = req;
   const { symbol } = params;
 
