@@ -1,8 +1,8 @@
 import { appToTest } from 'test-helpers';
-import router from './router';
+import routes from './routes';
 import { AssetNotFound } from './errors';
 
-const app = appToTest(router);
+const app = appToTest(routes);
 const assets = [{ symbol: 'BTC', name: 'Bitcoin' }, { symbol: 'ETH', name: 'Ethereum' }];
 
 describe('/assets route', () => {
@@ -29,7 +29,7 @@ describe('/assets route', () => {
       expect(body).to.deep.equal(asset);
     });
 
-    it.only('respond with not found error', async () => {
+    it('respond with not found error', async () => {
       const notExistentSymbol = 'XYZ';
 
       const res = await supertest(app)
