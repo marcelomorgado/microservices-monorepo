@@ -27,8 +27,7 @@
     "morgan": "^1.9.1",
     "prices": "^1.0.0",
     "validator": "^10.11.0",
-    "winston": "^3.2.1",
-    "yargs": "^13.2.4"
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
