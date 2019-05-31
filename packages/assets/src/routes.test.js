@@ -1,28 +1,28 @@
-import { appToTest } from 'test-helpers';
+import createApp from '../../app/dist/app';
 import routes from './routes';
 import { AssetNotFound } from './errors';
 
-const app = appToTest(routes);
+const app = createApp(routes);
 const assets = [{ symbol: 'BTC', name: 'Bitcoin' }, { symbol: 'ETH', name: 'Ethereum' }];
 
 describe('ASSETS', () => {
-  describe('GET /', () => {
+  describe('GET /assets', () => {
     it('should get a list of all assets', async () => {
       await supertest(app)
-        .get('/')
+        .get('/assets')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200, assets);
     });
   });
 
-  describe('GET /{symbol}', () => {
+  describe('GET /assets/{symbol}', () => {
     it('should get an asset', async () => {
       const [asset] = assets;
       const { symbol } = asset;
 
       const res = await supertest(app)
-        .get(`/${symbol}`)
+        .get(`/assets/${symbol}`)
         .expect('Content-Type', /json/)
         .expect(200);
       const { body } = res;
@@ -33,7 +33,7 @@ describe('ASSETS', () => {
       const notExistentSymbol = 'XYZ';
 
       const res = await supertest(app)
-        .get(`/${notExistentSymbol}`)
+        .get(`/assets/${notExistentSymbol}`)
         .expect('Content-Type', /json/)
         .expect(400);
 

@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "rm dist/* -rf",
+    "clean": "rm dist/* -rf",
+    "prebuild": "npm run clean",
     "build": "npx babel  src -d dist --ignore src/*.test.js,src/**/*.test.js",
     "prepare": "npm run build",
     "test": "npx mocha src/*.test.js --require @babel/register --file mocha.setup.js"
@@ -28,7 +29,6 @@
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "sinon": "^7.3.2",
-    "sinon-chai": "^3.3.0",
-    "test-helpers": "^1.0.0"
+    "sinon-chai": "^3.3.0"
   }
 }

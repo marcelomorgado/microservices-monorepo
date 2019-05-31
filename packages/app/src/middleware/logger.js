@@ -6,12 +6,13 @@ const { NODE_ENV, LOG_LEVEL } = env;
 
 export const logger = winston.createLogger({
   level: LOG_LEVEL,
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' })
-  ]
+  format: winston.format.json()
 });
+
+if (NODE_ENV === 'production') {
+  logger.add(new winston.transports.File({ filename: 'error.log', level: 'error' }));
+  logger.add(new winston.transports.File({ filename: 'combined.log' }));
+}
 
 if (NODE_ENV !== 'production') {
   logger.add(

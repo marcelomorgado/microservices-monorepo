@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rm dist/* -rf",
+    "clean": "rm dist/* -rf",
+    "prebuild": "npm run clean",
     "build": "npx babel  src -d dist --ignore src/*.test.js,src/**/*.test.js",
+    "prepare": "npm run build",
     "test:integration": "npx mocha src/*.test.js --require @babel/register --file mocha.setup.js",
     "prestart": "npm run build",
     "start": "node dist/index.js",
@@ -27,8 +29,7 @@
     "morgan": "^1.9.1",
     "prices": "^1.0.0",
     "validator": "^10.11.0",
-    "winston": "^3.2.1",
-    "yargs": "^13.2.4"
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
