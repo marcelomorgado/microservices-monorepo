@@ -1,32 +1,41 @@
 const { env } = process;
-const { APP_PORT } = env;
+const { APP_PORT, ROUTES } = env;
 const api = supertest(`http://localhost:${APP_PORT}`);
+const routes = ROUTES.split(' ');
 
 describe('Integration tests', () => {
-  it('should get all assets', async () => {
-    const expected = [{ symbol: 'BTC', name: 'Bitcoin' }, { symbol: 'ETH', name: 'Ethereum' }];
+  describe('Routes', () => {
+    // eslint-disable-next-line func-names
+    it('should get all assets', async function() {
+      if (!routes.includes('assets')) this.skip();
 
-    const res = await api
-      .get('/assets')
-      .expect('Content-Type', /json/)
-      .expect(200);
+      const expected = [{ symbol: 'BTC', name: 'Bitcoin' }, { symbol: 'ETH', name: 'Ethereum' }];
 
-    const { body: assets } = res;
+      const res = await api
+        .get('/assets')
+        .expect('Content-Type', /json/)
+        .expect(200);
 
-    expect(assets).to.deep.equal(expected);
-  });
+      const { body: assets } = res;
 
-  it('should get all prices', async () => {
-    const expected = [{ symbol: 'BTC', priceUsd: '10000' }, { symbol: 'ETH', priceUsd: '1000' }];
+      expect(assets).to.deep.equal(expected);
+    });
 
-    const res = await api
-      .get('/prices')
-      .expect('Content-Type', /json/)
-      .expect(200);
+    // eslint-disable-next-line func-names
+    it('should get all prices', async function() {
+      if (!routes.includes('prices')) this.skip();
 
-    const { body: assets } = res;
+      const expected = [{ symbol: 'BTC', priceUsd: '10000' }, { symbol: 'ETH', priceUsd: '1000' }];
 
-    expect(assets).to.deep.equal(expected);
+      const res = await api
+        .get('/prices')
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      const { body: assets } = res;
+
+      expect(assets).to.deep.equal(expected);
+    });
   });
 
   it('should get not found error', async () => {
