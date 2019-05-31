@@ -1,8 +1,8 @@
-import { appToTest } from 'test-helpers';
+import createApp from '../../app/dist/app';
 import routes from './routes';
 import { AssetNotFound } from './errors';
 
-const app = appToTest(routes);
+const app = createApp(routes);
 const assets = [{ symbol: 'BTC', name: 'Bitcoin' }, { symbol: 'ETH', name: 'Ethereum' }];
 
 describe('ASSETS', () => {
