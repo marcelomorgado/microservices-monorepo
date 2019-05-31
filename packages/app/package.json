@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rm dist/* -rf",
+    "clean": "rm dist/* -rf",
+    "prebuild": "npm run clean",
     "build": "npx babel  src -d dist --ignore src/*.test.js,src/**/*.test.js",
+    "prepare": "npm run build",
     "test:integration": "npx mocha src/*.test.js --require @babel/register --file mocha.setup.js",
     "prestart": "npm run build",
     "start": "node dist/index.js",
