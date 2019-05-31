@@ -6,23 +6,23 @@ const app = appToTest(routes);
 const prices = [{ symbol: 'BTC', priceUsd: '10000' }, { symbol: 'ETH', priceUsd: '1000' }];
 
 describe('PRICES', () => {
-  describe('GET /', () => {
+  describe('GET /prices', () => {
     it('should get all prices', async () => {
       await supertest(app)
-        .get('/')
+        .get('/prices')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200, prices);
     });
   });
 
-  describe('GET /{symbol}', () => {
+  describe('GET /prices/{symbol}', () => {
     it("should get an asset's price", async () => {
       const [asset] = prices;
       const { symbol, priceUsd: expectedPrice } = asset;
 
       const res = await supertest(app)
-        .get(`/${symbol}`)
+        .get(`/prices/${symbol}`)
         .expect('Content-Type', /json/)
         .expect(200);
       const { body: bitcoin } = res;
@@ -34,7 +34,7 @@ describe('PRICES', () => {
       const notExistentSymbol = 'XYZ';
 
       const res = await supertest(app)
-        .get(`/${notExistentSymbol}`)
+        .get(`/prices/${notExistentSymbol}`)
         .expect('Content-Type', /json/)
         .expect(400);
 
